@@ -74,10 +74,10 @@ for epoch in range(100):
         # print(input.size(), label.size())
         hidden, output = model(hidden, input)
         val, idx = output.max(1)
-        sys.stdout.write(idx2char[idx.data[0]])
-        loss += criterion(output, label)
+        sys.stdout.write(idx2char[idx.item()])
+        loss = criterion(output, label)
 
-    print(", epoch: %d, loss: %1.3f" % (epoch + 1, loss.data[0]))
+    print(", epoch: %d, loss: %1.3f" % (epoch + 1, loss.item()))
 
     loss.backward()
     optimizer.step()

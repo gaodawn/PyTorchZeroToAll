@@ -24,7 +24,7 @@ def gradient(x, y):  # d_loss/d_w
 print("predict (before training)",  4, forward(4))
 
 # Training loop
-for epoch in range(10):
+for epoch in range(40):
     for x_val, y_val in zip(x_data, y_data):
         grad = gradient(x_val, y_val)
         w = w - 0.01 * grad
@@ -34,4 +34,4 @@ for epoch in range(10):
     print("progress:", epoch, "w=", round(w, 2), "loss=", round(l, 2))
 
 # After training
-print("predict (after training)",  "4 hours", forward(4))
+print("predict (after training)",  "4 hours", forward(20))

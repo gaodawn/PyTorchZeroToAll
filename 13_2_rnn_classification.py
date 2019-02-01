@@ -141,7 +141,7 @@ def train():
         output = classifier(input, seq_lengths)
 
         loss = criterion(output, target)
-        total_loss += loss.data[0]
+        total_loss += loss.item()
 
         classifier.zero_grad()
         loss.backward()

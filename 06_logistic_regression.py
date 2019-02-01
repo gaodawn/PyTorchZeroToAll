@@ -35,13 +35,13 @@ criterion = torch.nn.BCELoss(size_average=True)
 optimizer = torch.optim.SGD(model.parameters(), lr=0.01)
 
 # Training loop
-for epoch in range(1000):
+for epoch in range(10000):
         # Forward pass: Compute predicted y by passing x to the model
     y_pred = model(x_data)
 
     # Compute and print loss
     loss = criterion(y_pred, y_data)
-    print(epoch, loss.data[0])
+    print(epoch, loss.item())
 
     # Zero gradients, perform a backward pass, and update the weights.
     optimizer.zero_grad()
@@ -53,3 +53,5 @@ hour_var = Variable(torch.Tensor([[1.0]]))
 print("predict 1 hour ", 1.0, model(hour_var).data[0][0] > 0.5)
 hour_var = Variable(torch.Tensor([[7.0]]))
 print("predict 7 hours", 7.0, model(hour_var).data[0][0] > 0.5)
+hour_var = Variable(torch.Tensor([[2.1]]))
+print("predict 7 hours", 2.1, model(hour_var).data[0][0] > 0.5)

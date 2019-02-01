@@ -41,7 +41,7 @@ for epoch in range(500):
 
     # Compute and print loss
     loss = criterion(y_pred, y_data)
-    print(epoch, loss.data[0])
+    print(epoch, loss.item())
 
     # Zero gradients, perform a backward pass, and update the weights.
     optimizer.zero_grad()
@@ -50,6 +50,6 @@ for epoch in range(500):
 
 
 # After training
-hour_var = Variable(torch.Tensor([[4.0]]))
+hour_var = Variable(torch.Tensor([[6.0]]))
 y_pred = model(hour_var)
-print("predict (after training)",  4, model(hour_var).data[0][0])
+print("predict (after training)",  6, model(hour_var).data[0][0])

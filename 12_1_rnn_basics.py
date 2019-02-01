@@ -18,11 +18,13 @@ hidden = Variable(torch.randn(1, 1, 2))
 # Input: (batch, seq_len, input_size) when batch_first=True
 inputs = Variable(torch.Tensor([h, e, l, l, o]))
 for one in inputs:
+    print(one)
     one = one.view(1, 1, -1)
+    print(one)
     # Input: (batch, seq_len, input_size) when batch_first=True
     out, hidden = cell(one, hidden)
     print("one input size", one.size(), "out size", out.size())
-
+"""
 # We can do the whole at once
 # Propagate input through RNN
 # Input: (batch, seq_len, input_size) when batch_first=True
@@ -58,3 +60,4 @@ inputs = inputs.transpose(dim0=0, dim1=1)
 # S x B x I
 out, hidden = cell(inputs, hidden)
 print("batch input size", inputs.size(), "out size", out.size())
+"""

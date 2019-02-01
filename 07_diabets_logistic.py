@@ -18,8 +18,8 @@ class Model(torch.nn.Module):
         In the constructor we instantiate two nn.Linear module
         """
         super(Model, self).__init__()
-        self.l1 = torch.nn.Linear(8, 6)
-        self.l2 = torch.nn.Linear(6, 4)
+        self.l1 = torch.nn.Linear(8, 4)
+        self.l2 = torch.nn.Linear(4, 4)
         self.l3 = torch.nn.Linear(4, 1)
 
         self.sigmoid = torch.nn.Sigmoid()
@@ -46,13 +46,13 @@ criterion = torch.nn.BCELoss(size_average=True)
 optimizer = torch.optim.SGD(model.parameters(), lr=0.1)
 
 # Training loop
-for epoch in range(100):
+for epoch in range(10):
         # Forward pass: Compute predicted y by passing x to the model
     y_pred = model(x_data)
 
     # Compute and print loss
     loss = criterion(y_pred, y_data)
-    print(epoch, loss.data[0])
+    print(epoch, loss.item())
 
     # Zero gradients, perform a backward pass, and update the weights.
     optimizer.zero_grad()
