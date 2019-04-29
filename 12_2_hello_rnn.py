@@ -17,11 +17,15 @@ one_hot_lookup = [[1, 0, 0, 0, 0],  # 0
                   [0, 0, 0, 0, 1]]  # 4
 
 y_data = [1, 0, 2, 3, 3, 4]    # ihello
+y_data = [[y] for y in y_data]
 x_one_hot = [one_hot_lookup[x] for x in x_data]
+
 
 # As we have one batch of samples, we will change them to variables only once
 inputs = Variable(torch.Tensor(x_one_hot))
 labels = Variable(torch.LongTensor(y_data))
+print(inputs)
+print(labels)
 
 num_classes = 5
 input_size = 5  # one-hot size
@@ -64,15 +68,15 @@ criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(model.parameters(), lr=0.1)
 
 # Train the model
-for epoch in range(100):
+for epoch in range(200):
     optimizer.zero_grad()
     loss = 0
     hidden = model.init_hidden()
 
     sys.stdout.write("predicted string: ")
-    for input, label in zip(inputs, labels):
-        # print(input.size(), label.size())
-        hidden, output = model(hidden, input)
+    for input1, label in zip(inputs, labels):
+        print(input1.size(), label.size())
+        hidden, output = model(hidden, input1)
         val, idx = output.max(1)
         sys.stdout.write(idx2char[idx.item()])
         loss = criterion(output, label)

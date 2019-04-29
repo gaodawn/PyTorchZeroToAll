@@ -12,12 +12,12 @@ from torch.autograd import Variable
 batch_size = 64
 
 # MNIST Dataset
-train_dataset = datasets.MNIST(root='./mnist_data/',
+train_dataset = datasets.MNIST(root='./data/',
                                train=True,
                                transform=transforms.ToTensor(),
                                download=False)
 
-test_dataset = datasets.MNIST(root='./mnist_data/',
+test_dataset = datasets.MNIST(root='./data/',
                               train=False,
                               transform=transforms.ToTensor())
 
